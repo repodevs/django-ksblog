@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Konco Dolan Blog{% endblock %}</title>
+
+    {% include 'default/header.html' %}
+
+    {% block css %}{% endblock %}
+
+</head>
+
+<body>
+
+	{% include 'default/nav.html' %}
+
+	
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('{% static 'assets/blog/img/home-bg.jpg' %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                <h2>{% block logo_title %}RepoDev{% endblock %}</h2>
+                    <hr class="small">
+                    <span class="subheading">{% block logo_subtitle %}Learn To Be Quieter {% endblock %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <div class="container">
+    	{% block content %}{% endblock %}
+    </div>
+
+    {% include 'default/footer.html' %}
+
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/blog/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'assets/blog/js/bootstrap.min.js' %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'assets/blog/js/clean-blog.min.js' %}"></script>
+
+    {% block javascript %}{% endblock %}
+
+</body>
+
+</html>

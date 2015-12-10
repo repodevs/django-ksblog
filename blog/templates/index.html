@@ -1,0 +1,38 @@
+{% extends 'default/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {% for post in posts %}
+        <div class="post-preview">
+            <a href="{% url 'post_show' post.slug %}">
+                <h2 class="post-title">
+                    {{ post.title }}
+                </h2>
+            </a>
+                <h3 class="post-subtitle">
+                    {% autoescape off %}
+                    {{ post.content|safe|truncatewords:"10"}}
+                    {% endautoescape %}
+                </h3>
+            <p class="post-meta">Posted by <a href="{% url 'author_list' post.creator %}">{{ post.creator }}</a> on <b><i>{{ post.created_at|date:"D, d M Y H:i" }}</i></b> Kategori <a href="{% url 'category_list' post.category %}">{{ post.category }}</a></p>
+        </div>
+        <hr>
+      {% endfor %}
+        <!-- Pager -->
+        <ul class="pager">
+          {% if posts.has_previous %}
+            <li class="previous">
+                <a href="?page={{ posts.previous_page_number }}">&larr; Prev Posts</a>
+            </li>
+          {% endif %}
+
+          {% if posts.has_next %}
+            <li class="next">
+                <a href="?page={{ posts.next_page_number }}">Next Posts &rarr;</a>
+            </li>
+          {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'default/base.html' %}
+{% load static %}
+
+
+{% block logo_title %}
+	{{ post.title }}
+{% endblock %}
+
+{% block logo_subtitle %}
+Posted by <a href="{% url 'author_list' post.creator %}">{{ post.creator }}</a> on {{ post.created_at|date:"D, d M Y H:i" }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+		<div>
+			<h2 class="post-title">{{ post.title }}</h2>
+            <p class="post-meta">Posted by <a href="{% url 'author_list' post.creator %}">{{ post.creator }}</a> on {{ post.created_at|date:"D, d M Y H:i" }}</p>
+		</div>
+		{% autoescape off %}
+			{{ post.content }}
+		{% endautoescape %}
+
+<hr>
+
+{% load disqus_tags %}
+{#% disqus_dev %#}
+{% disqus_show_comments %}
+{% set_disqus_url object.get_absolute_url %}
+    </div>
+</div>
+
+{% endblock %}
