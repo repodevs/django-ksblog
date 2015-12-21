@@ -1,1 +1,1 @@
-web: gunicorn ksblog.wsgi --log-file -
+web: waitress-serve --port=$PORT ksblog.wsgi:application
