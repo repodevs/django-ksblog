@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^blog/', include('blog.urls')),
-    url(r'', 'blog.views.index', name='index'),
+    url(r'^', 'blog.views.index', name='index'),
 
     # plugins ckeditor
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
